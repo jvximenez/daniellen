@@ -7,5 +7,21 @@
 </ion-header>
 
 <ion-content>
-  
+  <ion-card>
+    <ion-card-header>Balanço final:</ion-card-header>
+    <h2> Oi</h2>
+  </ion-card>
+  <ion-list>
+    <ion-item *ngFor="let div of comprasList">
+      <ion-avatar>
+        <img *ngIf="div['payload'] > 0" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        <img *ngIf="div['payload'] < 0" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      </ion-avatar>
+      <ion-label>
+        {{div.title}} 
+      </ion-label>
+      <h2>{{div.pagamento}}</h2>
+      <h2>{{div.payload}}</h2>
+    </ion-item>
+  </ion-list>
 </ion-content>
