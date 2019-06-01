@@ -16,6 +16,7 @@ export class Tab2Page {
   comprasRef: any
   comprasList: any
   compra: any
+  last:any
 
 
   constructor() {
@@ -42,8 +43,10 @@ export class Tab2Page {
     compras = compras.reverse()
 
     this.comprasList = compras;
-    console.log(this.comprasList)
+    console.log(this.comprasList.length-1, this.comprasList)
   });
+
+  
 
 
 
