@@ -9,19 +9,20 @@
 <ion-content>
   <ion-card>
     <ion-card-header>Balanço final:</ion-card-header>
-    <h2> Oi</h2>
+    <h2></h2>
   </ion-card>
+
+
   <ion-list>
     <ion-item *ngFor="let div of comprasList">
       <ion-avatar>
-        <img *ngIf="div['payload'] > 0" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-        <img *ngIf="div['payload'] < 0" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        <img *ngIf="div['payload'] > 0" src="/assets/imgs/JvPerfil.jpg">
+        <img *ngIf="div['payload'] < 0" src="/src/assets/imgs/DaniPerfil.jpg">
       </ion-avatar>
-      <ion-label>
-        {{div.title}} 
-      </ion-label>
-      <h2>{{div.pagamento}}</h2>
-      <h2>{{div.payload}}</h2>
+      <h2 class='titulo' no-padding >{{div.title}} <br> {{div.pagamento}} <br> {{TotalToDate(div.total)}}  </h2>
+      <ion-note slot="end"><p class='final'>{{Arredondar(div.payload,2)}} </p>
+        <p class='final2'>{{Arredondar(div.soma,2)}}</p>
+      </ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

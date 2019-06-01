@@ -49,4 +49,18 @@ export class Tab2Page {
 
   }
 
+
+  Arredondar(valor,casas){
+    let cas = 10**casas
+    let val = Math.round(valor*cas)/cas
+    return val
+  }
+
+  TotalToDate(total){
+    let ano = total.substr(0,4)
+    let mes = total.substr(4,2)
+    let dia = total.substr(6,2)
+    return (dia+'/'+mes )
+  }
+
 }
