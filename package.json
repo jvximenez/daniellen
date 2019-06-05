@@ -34,6 +34,7 @@
     "cordova-android": "8.0.0",
     "cordova-plugin-firebase": "2.0.5",
     "cordova-plugin-inappbrowser": "3.0.0",
+    "cordova-windows": "7.0.0",
     "core-js": "^2.5.4",
     "firebase": "^6.1.0",
     "rxjs": "~6.5.1",
@@ -86,7 +87,8 @@
       "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "windows"
     ]
   }
 }
