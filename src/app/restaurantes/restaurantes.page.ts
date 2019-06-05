@@ -12,19 +12,18 @@ export class RestaurantesPage implements OnInit {
   restaurante: any
 
   constructor() { 
-    this.restaurantesRef = firebase.database().ref('/restaures').orderByChild('total')
+    this.restaurantesRef = firebase.database().ref('/restaurantes').limitToFirst(100).orderByChild('total')
     
     this.restaurantesRef.on('value', restaurantesList =>{
       let restaurantes = [];
       restaurantesList.forEach(restaurante => {
+        console.log('entrou')
         var obj
         obj = restaurante.val()
-        console.log(obj['cia']),
-        (obj['cia'].forEach(element => {if (element == 'Daniela'){
+        if(obj['cia'].includes('Daniela')){
           obj.key = restaurante.key
           restaurantes.push(obj)
         }
-      }))
 
         return false;
         
@@ -32,12 +31,17 @@ export class RestaurantesPage implements OnInit {
       restaurantes = restaurantes.reverse()
 
       this.restaurantesList = restaurantes
-      console.log(this.restaurantesList)
+      console.log('oi', this.restaurantesList)
     })
   
   }
 
   ngOnInit() {
+  }
+
+
+  ShowDetalhes(rest){
+    console.log(rest)
   }
 
 }

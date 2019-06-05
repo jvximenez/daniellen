@@ -5,5 +5,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-item *ngFor="let rest of restaurantesList" (press)='ShowDetalhes(rest)'>
+      <h3>{{rest.title}}</h3>
+      <ion-note slot='end'>{{rest.dia}}/{{rest.mes}}</ion-note>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
