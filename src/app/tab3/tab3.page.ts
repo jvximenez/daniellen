@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
-import { AngularFireModule } from '@angular/fire';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { ActivatedRoute, Router } from '@angular/router';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
+
+
+
 
 
 
@@ -22,45 +29,51 @@ export class Tab3Page {
   urls = []
 
 
-  constructor() {
+  constructor(public photoViewer: PhotoViewer,private route: ActivatedRoute, private router: Router, private webview: WebView, private iab: InAppBrowser) {
 
-    let i = 1
-    let array = [] 
-    while (i <= 6){
+    var storageRef = firebase.storage().ref("/Imagens");
+    console.log('oi')
 
-      this.fotosRef = firebase.storage().ref('/Imagens/'+i+'.jpg').getDownloadURL().then(function(url) {
-        // `url` is the download URL for 'images/stars.jpg'
-      
-        // This can be downloaded directly:
-        var xhr = new XMLHttpRequest();
-        xhr.responseType = 'blob';
-        xhr.onload = function(event) {
-          var blob = xhr.response;
-        };
-        xhr.open('GET', url);
-        xhr.send();
+
+  // Now we get the references of these images
+  let array = []
+  storageRef.listAll().then(function(result) {
+
+    result.items.forEach(function(imageRef) {
+      // And finally display them
+      displayImage(imageRef);
+    });
+    }).catch(function(error) {
+      // Handle any errors
+    });
+
+    function displayImage(imageRef) {
+      imageRef.getDownloadURL().then(function(url) {
+        console.log(url,'aqui')
         array.push(url)
-      })
-      i+=1
+        console.log(this.urls)
+        
+        // TODO: Display the image on the UI
+      }).catch(function(error) {
+        // Handle any errors
+      });
     }
+   this.urls = array
+    console.log(this.urls,array)
+  }
 
-    this.urls = array
-    console.log(this.urls)
-
-
-
-    console.log('imageRef', this.fotosRef, this.url,array)
-
-
-    this.teste = "https://firebasestorage.googleapis.com/v0/b/ionic3-gastos-45fd4.appspot.com/o/Imagens%2F1.jpg?alt=media&token=a12466ba-469c-4d3d-a94f-61cddedd899e"
-  
-    console.log(this.imageRef)
-    console.log(this.fotosRef)
-    console.log(this.fotosList)
-
+  OpenFoto(item){
+    console.log(item)
+    this.iab.create(item)
   }
 
 
+ 
+
   
+
+
+
+    
 }
 
