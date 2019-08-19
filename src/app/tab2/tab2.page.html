@@ -11,8 +11,8 @@
     <ion-card-header>Balanço final:</ion-card-header>
     <ion-item no-line>
       <ion-avatar>
-        <img *ngIf="comprasList[0]['soma'] < 0 " src="/assets/imgs/JvPerfil.jpg">
-        <img *ngIf="comprasList[0]['soma'] > 0 " src="/assets/imgs/DaniPerfil.jpg">
+        <img *ngIf="comprasList[0]['soma'] < 0 " src="https://github.com/jvximenez/daniellen/blob/gh-pages/assets/imgs/JvPerfil.jpg?raw=true">
+        <img *ngIf="comprasList[0]['soma'] > 0 " src="https://github.com/jvximenez/daniellen/blob/gh-pages/assets/imgs/DaniPerfil.jpg?raw=true">
       </ion-avatar>
       <h2 padding>Devendo {{Arredondar(comprasList[0]['soma'],2)}}</h2>
     </ion-item>
@@ -23,8 +23,8 @@
   <ion-list>
     <ion-item *ngFor="let div of comprasList">
       <ion-avatar>
-        <img *ngIf="div['payload'] > 0" src="/assets/imgs/JvPerfil.jpg">
-        <img *ngIf="div['payload'] < 0" src="/assets/imgs/DaniPerfil.jpg">
+        <img *ngIf="div['payload'] > 0" src="https://github.com/jvximenez/daniellen/blob/gh-pages/assets/imgs/JvPerfil.jpg?raw=true">
+        <img *ngIf="div['payload'] < 0" src="https://github.com/jvximenez/daniellen/blob/gh-pages/assets/imgs/DaniPerfil.jpg?raw=true">
       </ion-avatar>
       <h2 class='titulo' no-padding >{{div.title}} <br> {{div.pagamento}} - {{TotalToDate(div.total)}}  </h2>
       <ion-note slot="end"><p class='final'>{{Arredondar(div.payload,2)}} </p>
